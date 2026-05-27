@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>계산 기준과 활용 가이드 | 생활금융 계산소</title>
+  <meta name="description" content="대출, 부가세, 연봉 실수령액, 퇴직금 계산기에 사용된 기준과 올바른 입력 방법을 설명합니다.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
+  <link rel="stylesheet" href="assets/styles.css?v=8">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="주요 메뉴">
+      <a class="brand" href="index.html"><span class="brand-mark"><img src="assets/logo-mark.svg?v=2" alt=""></span><span class="brand-copy"><span class="brand-title">생활금융 <em>계산소</em></span><small>대출·세금·급여·퇴직금 계산 도구</small></span></a>
+      <div class="nav-links">
+        <a href="loan.html">대출</a><a href="vat.html">부가세</a><a href="salary.html">연봉</a><a href="severance.html">퇴직금</a><a href="guide.html" aria-current="page">계산 기준</a><a href="about.html">소개</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="page-head compact">
+      <div class="container">
+        <div class="page-intro"><span class="page-icon"><svg class="icon-stroke"><use href="assets/icons.svg?v=2#guide"/></svg></span><div><span class="eyebrow">읽을거리 · 입력 기준과 계산 원칙</span><h1>계산 기준과 활용 가이드</h1></div></div>
+        <p>계산 결과를 실제 의사결정에 참고하기 전, 어떤 자료를 입력하고 어떤 한계가 있는지 확인하세요.</p>
+        <div class="trust-pills"><span class="trust-pill">공식 기준 참고</span><span class="trust-pill soft">2026년 기준 안내</span><span class="trust-pill soft">결과는 참고용</span></div>
+      </div>
+    </section>
+    <article class="container info-content">
+      <section class="highlight-card">
+        <h2>계산 전에 먼저 확인해 주세요</h2>
+        <p>계산 결과를 실제 의사결정에 참고하기 전, 어떤 기준과 한계가 있는지 먼저 확인해 주세요. 금융기관 약정, 세무 신고, 회사 정산 자료가 최종 확인 기준입니다.</p>
+      </section>
+      <section id="loan">
+        <h2><span class="tool-icon"><svg class="icon-stroke"><use href="assets/icons.svg?v=2#loan"/></svg></span> 대출 상환 방식 비교</h2>
+        <p><strong>원리금균등</strong>은 원금과 이자를 합친 월 납입액을 상환기간 동안 같은 수준으로 유지합니다. 월 예산을 관리하기 편하지만 초기에 원금 감소가 상대적으로 느릴 수 있습니다.</p>
+        <p><strong>원금균등</strong>은 매월 같은 금액의 원금을 갚고 남은 원금에 이자를 계산합니다. 초기 부담은 높지만 원금이 빠르게 줄어 총 이자가 낮아지는 경향이 있습니다.</p>
+        <p><strong>만기일시</strong>는 기간 중 이자를 내고 원금을 만기에 한꺼번에 갚는 방식입니다. 매월 부담은 낮게 보이지만 만기 원금 마련이 필요합니다.</p>
+        <p class="notice">본 사이트는 고정 금리와 월 단위 계산을 가정합니다. 변동금리, 중도상환수수료, 일할이자와 금융기관별 처리 규칙은 약정서를 확인하세요.</p>
+      </section>
+      <section id="vat">
+        <h2><span class="tool-icon"><svg class="icon-stroke"><use href="assets/icons.svg?v=2#vat"/></svg></span> 부가가치세 계산 범위</h2>
+        <p>일반과세자의 일반적인 거래는 공급가액에 10%를 적용해 매출세액을 계산합니다. 합계금액이 110만 원인 일반 거래라면 공급가액 100만 원과 부가가치세 10만 원으로 역산됩니다.</p>
+        <p>다만 신고 시 납부할 세액은 매입세액 공제, 영세율·면세 여부, 간이과세 적용 등으로 달라집니다. 이 계산기는 거래 금액을 나누어 확인하는 용도입니다.</p>
+        <div class="source-card"><p><strong>공식 출처</strong></p><a class="text-link" href="https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=7696&mi=2275" target="_blank" rel="noopener">국세청 부가가치세 세율 안내 확인하기</a></div>
+      </section>
+      <section id="salary">
+        <h2><span class="tool-icon"><svg class="icon-stroke"><use href="assets/icons.svg?v=2#salary"/></svg></span> 연봉 실수령액 입력 기준</h2>
+        <p>급여에서 공제되는 세금은 부양가족, 자녀, 월 급여, 비과세 항목과 회사 처리 방식에 따라 달라집니다. 따라서 본 계산기는 소득세를 임의로 추산하지 않고, 사용자가 급여명세서 또는 국세청 간이세액 자료로 확인한 월 소득세와 지방소득세를 입력하도록 합니다.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>2026년 직장가입자 항목</th><th>근로자 부담 계산 기준</th></tr></thead>
+            <tbody>
+              <tr><td>국민연금</td><td>기준소득월액 × 4.75%</td></tr>
+              <tr><td>건강보험</td><td>보수월액 × 3.595%</td></tr>
+              <tr><td>장기요양보험</td><td>건강보험료 × 13.14%</td></tr>
+              <tr><td>고용보험</td><td>보수월액 × 0.9%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>국민연금 보험료율은 2026년 총 9.5%, 사업장가입자는 근로자와 사용자가 각각 4.75%를 부담하는 것으로 국민연금공단이 안내하고 있습니다.</p>
+        <div class="source-card"><p><strong>공식 출처</strong></p><a class="text-link" href="https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0016M0.do?menuId=MN24001108" target="_blank" rel="noopener">국민연금공단 보험료 납부 안내 확인하기</a></div>
+      </section>
+      <section id="severance">
+        <h2><span class="tool-icon"><svg class="icon-stroke"><use href="assets/icons.svg?v=2#severance"/></svg></span> 퇴직금에서 평균임금이 중요한 이유</h2>
+        <p>퇴직금 계산의 기초가 되는 평균임금은 원칙적으로 퇴직 전 3개월 동안 지급된 임금 총액을 해당 기간의 총 일수로 나눈 값입니다. 법정 산식은 <strong>1일 평균임금 × 30일 × (계속근로일수 ÷ 365)</strong>입니다.</p>
+        <p>1년 이상 계속 근로하고 4주간 평균하여 주 15시간 이상 근무하는 경우의 일반적인 법정 퇴직금 기준을 안내하는 도구이며, 휴직기간·통상임금 비교·퇴직소득세 등은 회사나 전문가를 통해 확인해야 합니다.</p>
+        <div class="source-card"><p><strong>공식 출처</strong></p><a class="text-link" href="https://www.moel.go.kr/minwon/fastcounsel/fastcounselView.do?inetDcssMngId=202201121709391051000" target="_blank" rel="noopener">고용노동부 퇴직금 상담 안내 확인하기</a></div>
+      </section>
+      <section class="highlight-card">
+        <h2>업데이트 정책</h2>
+        <p>보험요율이나 세법처럼 변경되는 기준은 공식 기관의 공개 자료를 확인한 뒤 페이지의 적용 기준일과 계산 로직을 업데이트합니다. 현재 요율 관련 안내 기준일은 <strong>2026년 5월 26일</strong>입니다.</p>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid"><div><strong>생활금융 계산소</strong><br>신뢰할 수 있는 입력과 기준 확인을 돕습니다.</div><div class="footer-links"><a href="about.html">사이트 소개</a><a href="privacy.html">개인정보처리방침</a><a href="contact.html">문의</a></div></div></footer>
+</body>
+</html>

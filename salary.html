@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>연봉 실수령액 계산기 | 생활금융 계산소</title>
+  <meta name="description" content="2026년 직장가입자 보험요율과 입력한 원천징수세액으로 연봉의 월 실수령액을 추정합니다.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
+  <link rel="stylesheet" href="assets/styles.css?v=8">
+</head>
+<body class="calculator-page">
+  <header class="site-header">
+    <nav class="nav container" aria-label="주요 메뉴">
+      <a class="brand" href="index.html"><span class="brand-mark"><img src="assets/logo-mark.svg?v=2" alt=""></span><span class="brand-copy"><span class="brand-title">생활금융 <em>계산소</em></span><small>대출·세금·급여·퇴직금 계산 도구</small></span></a>
+      <div class="nav-links">
+        <a href="loan.html">대출</a><a href="vat.html">부가세</a><a href="salary.html" aria-current="page">연봉</a><a href="severance.html">퇴직금</a><a href="guide.html">계산 기준</a><a href="about.html">소개</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="page-head compact">
+      <div class="container">
+        <div class="page-intro"><span class="page-icon"><svg class="icon-stroke"><use href="assets/icons.svg?v=2#salary"/></svg></span><div><span class="eyebrow">급여 계산 · 2026년 직장가입자 추정</span><h1>연봉 실수령액 계산기</h1></div></div>
+        <p>연봉과 비과세 월액, 급여명세서 또는 간이세액표에서 확인한 월 소득세·지방소득세 합계를 입력하면 예상 수령액을 계산합니다.</p>
+        <div class="trust-pills"><span class="trust-pill">2026년 기준 안내</span><span class="trust-pill soft">브라우저에서 계산</span><span class="trust-pill soft">참고용 결과</span></div>
+      </div>
+    </section>
+    <div class="container calc-layout">
+      <form class="panel" id="salary-form">
+        <div class="panel-label">급여 정보 입력</div>
+        <div class="field">
+          <label for="salary-annual">연봉 (세전 총액)</label>
+          <div class="input-suffix"><input data-money id="salary-annual" value="60000000" inputmode="numeric"><span>원</span></div>
+          <small>회사와 계약한 공제 전 연봉 총액을 입력하세요.</small>
+        </div>
+        <div class="field">
+          <label for="salary-nontax">월 비과세 급여</label>
+          <div class="input-suffix"><input data-money id="salary-nontax" value="200000" inputmode="numeric"><span>원</span></div>
+          <small>보험료 보수에서 제외되는 비과세액이 있을 때 입력하세요.</small>
+        </div>
+        <div class="field">
+          <label for="salary-tax">월 소득세 + 지방소득세</label>
+          <div class="input-suffix"><input data-money id="salary-tax" value="250000" inputmode="numeric"><span>원</span></div>
+          <small>부양가족, 공제 조건에 따라 다르므로 직접 확인한 금액을 입력합니다.</small>
+        </div>
+      </form>
+      <div>
+        <section class="panel salary-result-panel" aria-live="polite">
+          <div class="result-box">
+            <div class="caption">월 예상 실수령액</div>
+            <div class="big-result" id="salary-monthly">0원</div>
+          </div>
+          <div class="results">
+            <div class="result-tile"><span>연 예상 실수령액</span><strong id="salary-annual-net">0원</strong></div>
+            <div class="result-tile"><span>월 보험료 합계</span><strong id="salary-insurance">0원</strong></div>
+            <div class="result-tile"><span>국민연금</span><strong id="salary-pension">0원</strong></div>
+            <div class="result-tile"><span>건강보험</span><strong id="salary-health">0원</strong></div>
+            <div class="result-tile"><span>장기요양보험</span><strong id="salary-care">0원</strong></div>
+            <div class="result-tile"><span>고용보험</span><strong id="salary-employment">0원</strong></div>
+            <div class="result-tile"><span>입력한 월 세금</span><strong id="salary-tax-result">0원</strong></div>
+          </div>
+          <div class="flow-box">
+            <h3>세전 총액에서 세후 수령액까지</h3>
+            <div class="salary-summary">
+              <p><strong>세전 총액</strong><span id="salary-gross-summary">연 0원 · 월 0원</span></p>
+              <p><strong>공제 금액</strong><span id="salary-deduction-summary">월 0원</span></p>
+              <p><strong>세후 실수령액</strong><span id="salary-net-summary">월 0원 · 연 0원</span></p>
+            </div>
+          </div>
+          <div class="progress-group">
+            <div class="progress-head"><span>월 급여 구성</span><span id="salary-ratio">공제 0%</span></div>
+            <div class="progress-bar"><span class="principal" id="salary-net-bar"></span><span class="deduction" id="salary-deduction-bar"></span></div>
+            <div class="progress-legend"><span id="salary-net-legend">실수령액 0원</span><span id="salary-deduction-legend">공제 0원</span></div>
+          </div>
+          <div class="analysis-box">
+            <h3>결과 해석</h3>
+            <p>입력한 연봉, 비과세 급여, 소득세·지방소득세를 기준으로 계산한 월 예상 수령액입니다. 부양가족, 회사별 비과세 처리, 원천징수 방식에 따라 실제 급여와 다를 수 있습니다.</p>
+          </div>
+          <p class="notice warning">국민연금 기준소득월액 상·하한, 회사의 원 단위 처리, 상여금, 연말정산은 반영하지 않은 월 예상치입니다.</p>
+        </section>
+        <section class="panel criteria-panel">
+          <h2>적용한 2026년 요율</h2>
+          <p>직장가입자 근로자 부담 기준으로 국민연금 4.75%, 건강보험 3.595%, 장기요양보험은 건강보험료의 13.14%, 고용보험 0.9%를 적용했습니다.</p>
+          <p><a class="text-link" href="https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0016M0.do?menuId=MN24001108" target="_blank" rel="noopener">국민연금공단 보험료율 확인</a></p>
+          <p><a class="text-link" href="guide.html#salary">입력 기준과 주의사항 보기</a></p>
+        </section>
+      </div>
+    </div>
+    <section class="container below-calc">
+      <div class="formula-box">
+        <h2>이 계산기는 이렇게 계산합니다</h2>
+        <p>월 예상 실수령액은 연봉의 월 환산액에서 2026년 직장가입자 보험료 추정액과 사용자가 입력한 월 소득세·지방소득세 합계를 차감한 금액입니다.</p>
+      </div>
+      <div class="faq-section">
+        <h2>자주 묻는 질문</h2>
+        <div class="faq-grid">
+          <article class="faq-card"><h3>연봉 실수령액 계산기에 소득세를 직접 입력해야 하나요?</h3><p>부양가족과 공제 조건에 따라 달라지므로 급여명세서나 간이세액표의 금액을 입력하는 편이 정확합니다.</p></article>
+          <article class="faq-card"><h3>비과세 급여는 연봉 실수령액에서 어떻게 반영되나요?</h3><p>식대 등 조건에 따라 과세·보험 산정에서 제외될 수 있는 월 급여 항목입니다.</p></article>
+          <article class="faq-card"><h3>연말정산 결과도 연봉 실수령액 계산에 반영되나요?</h3><p>반영하지 않습니다. 이 도구는 매월 받게 될 급여를 확인하기 위한 추정 계산입니다.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid"><div><strong>생활금융 계산소</strong><br><span data-today></span> · 급여 지급액은 회사 명세서를 확인하세요.</div><div class="footer-links"><a href="about.html">사이트 소개</a><a href="privacy.html">개인정보처리방침</a><a href="contact.html">문의</a></div></div></footer>
+  <script src="assets/app.js?v=3"></script>
+</body>
+</html>

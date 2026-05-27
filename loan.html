@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>대출 이자 계산기 | 생활금융 계산소</title>
+  <meta name="description" content="대출금액, 금리, 기간을 입력해 원리금균등, 원금균등, 만기일시 상환의 월 부담과 총 이자를 계산합니다.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
+  <link rel="stylesheet" href="assets/styles.css?v=8">
+</head>
+<body class="calculator-page">
+  <header class="site-header">
+    <nav class="nav container" aria-label="주요 메뉴">
+      <a class="brand" href="index.html"><span class="brand-mark"><img src="assets/logo-mark.svg?v=2" alt=""></span><span class="brand-copy"><span class="brand-title">생활금융 <em>계산소</em></span><small>대출·세금·급여·퇴직금 계산 도구</small></span></a>
+      <div class="nav-links">
+        <a href="loan.html" aria-current="page">대출</a><a href="vat.html">부가세</a><a href="salary.html">연봉</a><a href="severance.html">퇴직금</a><a href="guide.html">계산 기준</a><a href="about.html">소개</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="page-head compact">
+      <div class="container">
+        <div class="page-intro"><span class="page-icon"><svg class="icon-stroke"><use href="assets/icons.svg?v=2#loan"/></svg></span><div><span class="eyebrow">대출 계획</span><h1>대출 이자 계산기</h1></div></div>
+        <p>상환 방식에 따라 첫 달 또는 상환기간의 월 납입액과 전체 이자 부담이 어떻게 달라지는지 비교해 보세요.</p>
+        <div class="trust-pills"><span class="trust-pill">브라우저에서 계산</span><span class="trust-pill soft">참고용 결과</span><span class="trust-pill soft">입력값 저장 없음</span></div>
+      </div>
+    </section>
+    <div class="container calc-layout">
+      <form class="panel" id="loan-form">
+        <div class="panel-label">대출 조건 입력</div>
+        <div class="field">
+          <label for="loan-amount">대출 원금</label>
+          <div class="input-suffix"><input data-money id="loan-amount" value="100000000" inputmode="numeric"><span>원</span></div>
+        </div>
+        <div class="field">
+          <label for="loan-rate">연 이자율</label>
+          <div class="input-suffix"><input id="loan-rate" value="4.5" type="number" min="0" step="0.01"><span>%</span></div>
+        </div>
+        <div class="field">
+          <label for="loan-months">전체 대출 기간</label>
+          <div class="input-suffix"><input id="loan-months" value="360" type="number" min="1"><span>개월</span></div>
+        </div>
+        <div class="field">
+          <label for="loan-grace">거치기간</label>
+          <div class="input-suffix"><input id="loan-grace" value="0" type="number" min="0"><span>개월</span></div>
+          <small>거치기간에는 원금 상환 없이 이자만 납입하는 것으로 계산합니다.</small>
+        </div>
+        <div class="field">
+          <span class="field-label">상환 방식</span>
+          <div class="choice-row choice-cards">
+            <label><input type="radio" name="repayment" value="equal-payment" checked><span>원리금균등</span></label>
+            <label><input type="radio" name="repayment" value="equal-principal"><span>원금균등</span></label>
+            <label><input type="radio" name="repayment" value="bullet"><span>만기일시</span></label>
+          </div>
+        </div>
+      </form>
+      <div>
+        <section class="panel" aria-live="polite">
+          <div class="result-box">
+            <div class="caption" id="loan-result-label">상환기간 월 납입액</div>
+            <div class="big-result" id="loan-monthly">0원</div>
+          </div>
+          <div class="results">
+            <div class="result-tile"><span>총 이자</span><strong id="loan-interest">0원</strong></div>
+            <div class="result-tile"><span>총 납입액</span><strong id="loan-total">0원</strong></div>
+            <div class="result-tile"><span>거치기간 월 이자</span><strong id="loan-grace-payment">0원</strong></div>
+          </div>
+          <div class="progress-group">
+            <div class="progress-head"><span>첫 달 납입액 구성</span><span id="loan-ratio">원금 0% · 이자 0%</span></div>
+            <div class="progress-bar"><span class="principal" id="loan-principal-bar"></span><span class="interest" id="loan-interest-bar"></span></div>
+            <div class="progress-legend"><span id="loan-principal-month">원금 0원</span><span id="loan-interest-month">이자 0원</span></div>
+          </div>
+          <div class="analysis-box">
+            <h3>결과 해석</h3>
+            <p>이 금액은 입력한 대출 조건과 상환 방식을 기준으로 계산한 월 예상 납입액입니다. 실제 금융기관의 적용 방식, 수수료, 중도상환 조건에 따라 달라질 수 있습니다.</p>
+          </div>
+          <p class="notice">실제 대출은 납입일, 중도상환, 변동금리, 인지세 및 각 금융기관의 원 단위 처리 방식에 따라 달라질 수 있습니다.</p>
+        </section>
+        <section class="panel criteria-panel">
+          <h2>계산 방식</h2>
+          <p>원리금균등은 상환기간 동안 동일한 원리금을 내는 방식이며, 원금균등은 매월 같은 원금을 갚아 첫 납입액이 크고 점차 줄어듭니다. 만기일시는 기간 중 이자를 내고 만기에 원금을 상환하는 것으로 계산합니다.</p>
+          <p><a class="text-link" href="guide.html#loan">상환 방식 자세히 보기</a></p>
+        </section>
+      </div>
+    </div>
+    <section class="container below-calc">
+      <div class="formula-box">
+        <h2>이 계산기는 이렇게 계산합니다</h2>
+        <p>원리금균등상환은 원금과 이자의 합계 납입액을 매월 비슷하게 유지하는 상환 방식입니다. 원금균등상환은 원금을 매월 동일하게 나누어 갚아 시간이 지날수록 이자가 감소하는 방식입니다.</p>
+      </div>
+      <div class="faq-section">
+        <h2>자주 묻는 질문</h2>
+        <div class="faq-grid">
+          <article class="faq-card"><h3>거치기간을 입력하면 대출 월 납입액은 어떻게 계산되나요?</h3><p>거치기간에는 원금을 갚지 않고 대출 잔액에 대한 이자만 납입하는 것으로 계산합니다.</p></article>
+          <article class="faq-card"><h3>대출 이자 계산 결과가 실제 은행 금액과 다른 이유는 무엇인가요?</h3><p>납입일, 변동금리, 중도상환과 금융기관의 원 단위 처리 규칙에 따라 차이가 발생할 수 있습니다.</p></article>
+          <article class="faq-card"><h3>원리금균등, 원금균등, 만기일시 상환 방식은 어떻게 다르나요?</h3><p>월 부담의 안정성이 중요하면 원리금균등, 초기 부담을 감수하고 이자를 낮추려면 원금균등을 비교해 보세요.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid"><div><strong>생활금융 계산소</strong><br>결과는 대출 비교를 위한 참고용입니다.</div><div class="footer-links"><a href="about.html">사이트 소개</a><a href="privacy.html">개인정보처리방침</a><a href="contact.html">문의</a></div></div></footer>
+  <script src="assets/app.js?v=3"></script>
+</body>
+</html>

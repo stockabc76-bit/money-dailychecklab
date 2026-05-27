@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>퇴직금 계산기 | 생활금융 계산소</title>
+  <meta name="description" content="계속근로기간과 퇴직 전 3개월 평균임금을 이용해 법정 퇴직금의 세전 예상액을 계산합니다.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
+  <link rel="stylesheet" href="assets/styles.css?v=8">
+</head>
+<body class="calculator-page">
+  <header class="site-header">
+    <nav class="nav container" aria-label="주요 메뉴">
+      <a class="brand" href="index.html"><span class="brand-mark"><img src="assets/logo-mark.svg?v=2" alt=""></span><span class="brand-copy"><span class="brand-title">생활금융 <em>계산소</em></span><small>대출·세금·급여·퇴직금 계산 도구</small></span></a>
+      <div class="nav-links">
+        <a href="loan.html">대출</a><a href="vat.html">부가세</a><a href="salary.html">연봉</a><a href="severance.html" aria-current="page">퇴직금</a><a href="guide.html">계산 기준</a><a href="about.html">소개</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="page-head compact">
+      <div class="container">
+        <div class="page-intro"><span class="page-icon"><svg class="icon-stroke"><use href="assets/icons.svg?v=2#severance"/></svg></span><div><span class="eyebrow">근로 계산 · 평균임금 기준</span><h1>퇴직금 계산기</h1></div></div>
+        <p>퇴직 전 3개월 임금총액을 바탕으로 평균임금을 산출하여 세전 예상 퇴직금을 확인합니다.</p>
+        <div class="trust-pills"><span class="trust-pill">공식 기준 참고</span><span class="trust-pill soft">입력값 저장 없음</span><span class="trust-pill soft">참고용 결과</span></div>
+      </div>
+    </section>
+    <div class="container calc-layout">
+      <form class="panel" id="severance-form">
+        <div class="panel-label">근로 및 임금 정보 입력</div>
+        <div class="field">
+          <label for="work-start">입사일</label>
+          <input id="work-start" type="date" value="2021-01-01">
+        </div>
+        <div class="field">
+          <label for="work-end">퇴직일</label>
+          <input id="work-end" type="date" value="2026-01-01">
+          <small>퇴직일은 근로관계가 종료되는 날짜로 입력합니다.</small>
+        </div>
+        <div class="field">
+          <label for="three-month-pay">퇴직 전 3개월 임금총액</label>
+          <div class="input-suffix"><input data-money id="three-month-pay" value="15000000" inputmode="numeric"><span>원</span></div>
+          <small>평균임금 산정에 포함되는 임금과 반영 대상 상여금 등을 확인하세요.</small>
+        </div>
+        <div class="field">
+          <label for="average-days">해당 3개월의 총 일수</label>
+          <div class="input-suffix"><input id="average-days" type="number" value="92" min="1"><span>일</span></div>
+        </div>
+      </form>
+      <div>
+        <section class="panel" aria-live="polite">
+          <div class="result-box">
+            <div class="caption">세전 예상 퇴직금</div>
+            <div class="big-result" id="severance-gross">0원</div>
+          </div>
+          <div class="results">
+            <div class="result-tile"><span>1일 평균임금</span><strong id="severance-daily">0원</strong></div>
+            <div class="result-tile"><span>계속근로일수</span><strong id="severance-days">0일</strong></div>
+          </div>
+          <div class="flow-box">
+            <h3>퇴직금 산정 흐름</h3>
+            <div class="step-flow"><span>입사일</span><span>퇴직일</span><span>계속근로일수</span><span>세전 예상 퇴직금</span></div>
+          </div>
+          <p><span class="status-badge" id="severance-status">1년 이상 근속 기준 충족</span></p>
+          <div class="analysis-box">
+            <h3>결과 해석</h3>
+            <p>퇴직 전 3개월 임금총액과 계속근로기간을 바탕으로 산출한 세전 예상 퇴직금입니다. 퇴직소득세, 통상임금 비교, 회사 정산 기준에 따라 실제 지급액은 달라질 수 있습니다.</p>
+          </div>
+          <p class="notice warning">퇴직소득세, 통상임금과 평균임금의 비교, 휴직·휴업 등 제외기간은 계산하지 않습니다.</p>
+        </section>
+        <section class="panel criteria-panel">
+          <h2>법정 산정 원칙</h2>
+          <p>고용노동부 안내에 따르면 1년 이상 계속 근로하고 주 평균 소정근로시간이 15시간 이상인 근로자에게, 계속근로기간 1년에 대해 30일분 이상의 평균임금을 지급합니다.</p>
+          <p><a class="text-link" href="https://www.moel.go.kr/minwon/fastcounsel/fastcounselView.do?inetDcssMngId=202201121709391051000" target="_blank" rel="noopener">고용노동부 퇴직금 안내 확인</a></p>
+        </section>
+      </div>
+    </div>
+    <section class="container below-calc">
+      <div class="formula-box">
+        <h2>평균임금 계산 구조</h2>
+        <p>세전 예상 퇴직금은 1일 평균임금 × 30일 × (계속근로일수 ÷ 365)로 계산합니다. 1일 평균임금은 입력한 퇴직 전 3개월 임금총액을 해당 기간의 총 일수로 나눈 금액입니다.</p>
+      </div>
+      <div class="faq-section">
+        <h2>자주 묻는 질문</h2>
+        <div class="faq-grid">
+          <article class="faq-card"><h3>퇴직금 계산기는 1년 미만 근무자도 계산할 수 있나요?</h3><p>일반적인 법정 퇴직금은 계속근로기간 1년 이상인 근로자를 기준으로 합니다.</p></article>
+          <article class="faq-card"><h3>퇴직금 계산기에서 세후 퇴직금도 볼 수 있나요?</h3><p>퇴직소득세는 개인별 조건에 따라 달라 이 페이지에서는 세전 예상액만 제공합니다.</p></article>
+          <article class="faq-card"><h3>퇴직 전 3개월 임금총액에는 어떤 금액이 포함되나요?</h3><p>평균임금 산정 대상 임금과 상여금 반영 여부는 회사 자료와 고용노동부 안내를 확인하세요.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-grid"><div><strong>생활금융 계산소</strong><br>최종 금액은 회사 정산 자료 또는 전문가 확인이 필요합니다.</div><div class="footer-links"><a href="about.html">사이트 소개</a><a href="privacy.html">개인정보처리방침</a><a href="contact.html">문의</a></div></div></footer>
+  <script src="assets/app.js?v=3"></script>
+</body>
+</html>
