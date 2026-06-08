@@ -70,6 +70,11 @@ a.text-link {
   width: min(1080px, calc(100% - 40px));
 }
 
+.info-page .nav.container,
+.info-page .page-head .container {
+  width: min(1080px, calc(100% - 40px));
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -1132,6 +1137,11 @@ th {
   .calculator-page .nav.container,
   .calculator-page .page-head .container,
   .calculator-page .below-calc {
+    width: min(100% - 28px, 1080px);
+  }
+
+  .info-page .nav.container,
+  .info-page .page-head .container {
     width: min(100% - 28px, 1080px);
   }
 
