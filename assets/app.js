@@ -38,6 +38,16 @@
     });
   }
 
+  function initFamilySiteSelect() {
+    document.querySelectorAll("[data-family-site-select]").forEach(function (select) {
+      if (select.dataset.ready === "true") return;
+      select.dataset.ready = "true";
+      select.addEventListener("change", function () {
+        if (select.value) window.location.href = select.value;
+      });
+    });
+  }
+
   function initLoan() {
     const form = document.getElementById("loan-form");
     if (!form) return;
@@ -195,6 +205,7 @@
   }
 
   bindMoneyInputs();
+  initFamilySiteSelect();
   initLoan();
   initVat();
   initSalary();

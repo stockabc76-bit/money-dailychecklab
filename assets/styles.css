@@ -1042,6 +1042,37 @@ th {
   gap: 24px;
 }
 
+.footer-summary {
+  max-width: 420px;
+}
+
+.family-site-switcher {
+  margin-top: 14px;
+}
+
+.family-site-switcher label {
+  display: grid;
+  gap: 7px;
+  max-width: 260px;
+}
+
+.family-site-switcher span {
+  color: var(--navy);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.family-site-switcher select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #f6f9fb;
+  color: var(--navy);
+  font: inherit;
+  font-size: 0.86rem;
+  padding: 10px 12px;
+}
+
 .footer-links {
   display: flex;
   flex-wrap: wrap;
@@ -1086,6 +1117,10 @@ th {
   .brand-mark {
     width: 44px;
     height: 44px;
+  }
+
+  .footer-grid {
+    flex-direction: column;
   }
 }
 
